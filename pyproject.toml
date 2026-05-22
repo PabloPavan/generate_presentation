@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "presentation-agent"
+version = "0.1.0"
+description = "CLI tool to convert PDF content into structured presentation plans and PPTX files"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "openai>=1.0.0",
+  "pydantic>=2.7.0",
+  "python-dotenv>=1.0.0",
+  "PyMuPDF>=1.24.0",
+  "python-pptx>=0.6.23",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "ruff>=0.5.0",
+]
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.presentation_agent]
+# Convenience script aliases to run manually:
+# python -m pytest
+# ruff check .
+# python main.py --help
+
+[project.scripts]
+presentation-agent = "main:main"
+
+[tool.presentation_agent.scripts]
+test = "pytest"
+lint = "ruff check ."
+cli = "python main.py --help"
