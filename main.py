@@ -18,6 +18,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--template", default=None)
     parser.add_argument("--save-json", dest="save_json", action="store_true", default=True)
     parser.add_argument("--no-save-json", dest="save_json", action="store_false")
+    parser.add_argument("--review-pass", dest="review_pass", action="store_true", default=True)
+    parser.add_argument("--no-review-pass", dest="review_pass", action="store_false")
     return parser
 
 
@@ -34,6 +36,7 @@ def main() -> int:
             audience=args.audience,
             objective=args.objective,
             slide_count=args.slides,
+            review_pass=args.review_pass,
         )
 
         output_path = Path(args.output)
