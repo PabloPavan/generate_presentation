@@ -44,7 +44,19 @@ python main.py \
   --slides 20
 ```
 
+## Etapa de revisão
+
+Por padrão, o agente executa duas etapas com IA:
+1. Geração do plano inicial em JSON.
+2. Revisão/refinamento do plano para alinhar melhor com o conteúdo do PDF.
+
+Para desabilitar a etapa de revisão:
+
+```bash
+python main.py --pdf inputs/aula.pdf --no-review-pass
+```
+
 ## Saídas
 
-- `.json` com o plano estruturado
+- `.json` com o plano estruturado revisado
 - `.pptx` com a apresentação
